@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">PhotoLibrary</string>
+    <string name="screen_home_title_str">Home</string>
+    <string name="screen_picture_details_title_str">Picture Details</string>
+
+    <string name="message_no_network_connected_str">No network connected!</string>
+    <string name="message_something_went_wrong_str">Something went wrong!</string>
+    <string name="message_load_pictures_str">Loading more pictures...</string>
+    <string name="label_types_text_str">Type</string>
+    <string name="label_popular_text_str">Popular</string>
+    <string name="message_search_results_for_str">Search results for %1s</string>
+    <string name="message_load_photos_str">Loading more photos...</string>
+    <string name="action_retry_str">Retry</string>
+</resources>
