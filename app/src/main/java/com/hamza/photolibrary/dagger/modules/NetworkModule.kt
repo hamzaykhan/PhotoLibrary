@@ -1,7 +1,6 @@
-package com.hamza.photolibrary.di.modules
+package com.hamza.photolibrary.dagger.modules
 
-import com.hamza.photolibrary.data.remote.ApiResponseCallAdapterFactory
-import com.hamza.photolibrary.data.remote.UnsplashApiService
+import com.hamza.photolibrary.data.api.ApiService
 import com.hamza.photolibrary.utils.AppConstants
 import dagger.Module
 import dagger.Provides
@@ -12,17 +11,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-class NetworkApiModule {
+class NetworkModule {
     @Singleton
     @Provides
-    fun providesOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(): OkHttpClient {
         val logging = HttpLoggingInterceptor()
         logging.setLevel(HttpLoggingInterceptor.Level.BASIC)
 
         return OkHttpClient.Builder()
             .addInterceptor { chain ->
                 var request = chain.request()
-                var newRequest = request.newBuilder().header("Authorization", AppConstants.API.API_KEY)
+                var newRequest = request.newBuilder().header("Authorization", AppConstants.API_KEY)
                 chain.proceed(newRequest.build())
             }
             .addInterceptor(logging)
@@ -31,18 +30,17 @@ class NetworkApiModule {
 
     @Singleton
     @Provides
-    fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(UnsplashApiService.BASE_API_URL)
+            .baseUrl(AppConstants.BASE_API_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(ApiResponseCallAdapterFactory())
             .build()
     }
 
     @Singleton
     @Provides
-    fun providesUnsplashApiService(retrofit: Retrofit): UnsplashApiService {
-        return retrofit.create(UnsplashApiService::class.java)
+    fun provideApiService(retrofit: Retrofit): ApiService {
+        return retrofit.create(ApiService::class.java)
     }
 }

@@ -1,11 +1,11 @@
-package com.hamza.photolibrary.model
+package com.hamza.photolibrary.data.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class PhotoUrlsModel(
+data class PhotoUrls(
     @Expose val raw: String,
     @Expose val full: String,
     @Expose val regular: String,

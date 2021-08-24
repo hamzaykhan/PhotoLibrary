@@ -1,4 +1,4 @@
-package com.hamza.photolibrary.base
+package com.hamza.photolibrary.ui.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -5,7 +5,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.hamza.photolibrary.R
-import com.hamza.photolibrary.base.BaseActivity
+import com.hamza.photolibrary.ui.base.BaseActivity
 import com.hamza.photolibrary.databinding.MainActivityBinding
 
 class MainActivity : BaseActivity() {

@@ -1,4 +1,4 @@
-package com.hamza.photolibrary.base
+package com.hamza.photolibrary.ui.base
 
 import android.content.Context
 import androidx.fragment.app.Fragment

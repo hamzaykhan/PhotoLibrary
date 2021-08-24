@@ -1,4 +1,4 @@
-package com.hamza.photolibrary.adapter
+package com.hamza.photolibrary.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.hamza.photolibrary.R
 import com.hamza.photolibrary.databinding.PhotoItemLayoutBinding
-import com.hamza.photolibrary.model.PhotoModel
+import com.hamza.photolibrary.data.model.Photo
 
-class PhotosAdapter(val onPhotoSelected: (photo: PhotoModel, position: Int) -> Unit): RecyclerView.Adapter<PhotosAdapter.PhotoViewHolder>() {
+class PhotosAdapter(val onPhotoSelected: (photo: Photo, position: Int) -> Unit): RecyclerView.Adapter<PhotosAdapter.PhotoViewHolder>() {
 
-    private val photoItems: ArrayList<PhotoModel> = arrayListOf()
+    private val photoItems: ArrayList<Photo> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
         var binding = PhotoItemLayoutBinding.inflate(
@@ -27,7 +27,7 @@ class PhotosAdapter(val onPhotoSelected: (photo: PhotoModel, position: Int) -> U
 
     override fun getItemCount() = photoItems.size
 
-    fun updateItems(photosList: List<PhotoModel>) {
+    fun updateItems(photosList: List<Photo>) {
         photoItems.clear()
         photoItems.addAll(photosList)
         notifyDataSetChanged()
@@ -35,15 +35,15 @@ class PhotosAdapter(val onPhotoSelected: (photo: PhotoModel, position: Int) -> U
 
     inner class PhotoViewHolder(val itemBinding: PhotoItemLayoutBinding): RecyclerView.ViewHolder(itemBinding.root) {
 
-        fun bind(photoModel: PhotoModel, position: Int) {
+        fun bind(photo: Photo, position: Int) {
             itemBinding.apply {
-                imgPhoto.load(photoModel.urls.thumb) {
+                imgPhoto.load(photo.urls.thumb) {
                     placeholder(R.color.color_box_background)
                     crossfade(true)
                 }
 
                 cardPhoto.setOnClickListener {
-                    onPhotoSelected(photoModel, position)
+                    onPhotoSelected(photo, position)
                 }
 
             }

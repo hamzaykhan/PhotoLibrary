@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import coil.load
-import com.hamza.photolibrary.base.BaseFragment
+import com.hamza.photolibrary.ui.base.BaseFragment
 import com.hamza.photolibrary.databinding.PictureDetailFragmentBinding
-import com.hamza.photolibrary.model.PhotoModel
+import com.hamza.photolibrary.data.model.Photo
 
 class PictureDetailFragment : BaseFragment() {
 
@@ -29,7 +29,7 @@ class PictureDetailFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this, viewModelProvider).get(PictureDetailViewModel::class.java)
 
-        var photo = arguments?.getParcelable<PhotoModel>("photo")
+        var photo = arguments?.getParcelable<Photo>("photo")
         if (photo == null) {
             findNavController().popBackStack()
             return
@@ -46,7 +46,7 @@ class PictureDetailFragment : BaseFragment() {
     }
 
     fun initObservations() {
-        viewModel.photoModelLiveData.observe(viewLifecycleOwner) { photo ->
+        viewModel.photoLiveData.observe(viewLifecycleOwner) { photo ->
             bi.photoView.load(photo.urls.full)
         }
     }

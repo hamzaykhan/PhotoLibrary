@@ -1,8 +1,8 @@
-package com.hamza.photolibrary.di.components
+package com.hamza.photolibrary.dagger.components
 
 import android.app.Application
 import com.hamza.photolibrary.PhotoLibraryApp
-import com.hamza.photolibrary.di.modules.*
+import com.hamza.photolibrary.dagger.modules.*
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -21,8 +21,8 @@ import javax.inject.Singleton
         FragmentModule::class,
         ViewModelsFactoryModule::class,
         ViewModelModule::class,
-        NetworkApiModule::class,
-        RepositoryModule::class
+        NetworkModule::class,
+        ReposModule::class
     ]
 )
 
@@ -31,7 +31,7 @@ interface AppComponent : AndroidInjector<PhotoLibraryApp> {
     @Component.Builder
     interface Builder {
         @BindsInstance
-        fun create(app: Application): Builder
+        fun application(app: Application): Builder
 
         fun build(): AppComponent
     }

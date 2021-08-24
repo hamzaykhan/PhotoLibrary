@@ -1,4 +1,4 @@
-package com.hamza.photolibrary.di.factories
+package com.hamza.photolibrary.dagger.modules
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

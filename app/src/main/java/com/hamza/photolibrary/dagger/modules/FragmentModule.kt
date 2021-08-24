@@ -1,4 +1,4 @@
-package com.hamza.photolibrary.di.modules
+package com.hamza.photolibrary.dagger.modules
 
 import com.hamza.photolibrary.ui.detail.PictureDetailFragment
 import com.hamza.photolibrary.ui.home.HomeFragment
