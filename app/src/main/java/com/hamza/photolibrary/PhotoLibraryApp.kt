@@ -1,7 +1,7 @@
 package com.hamza.photolibrary
 
 import android.app.Application
-import com.hamza.photolibrary.di.components.DaggerAppComponent
+import com.hamza.photolibrary.dagger.components.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
@@ -19,7 +19,7 @@ class PhotoLibraryApp : Application(), HasAndroidInjector {
 
     fun initDi() {
         DaggerAppComponent.builder()
-            .create(this)
+            .application(this)
             .build()
             .inject(this)
     }

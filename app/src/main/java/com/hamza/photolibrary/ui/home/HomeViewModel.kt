@@ -56,7 +56,7 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             fetchPopularPhotosUsecase(page).collect { dataState ->
                 when(dataState) {
-                    is DataState.Success -> {
+                    is DataState.Success<List<Photo>> -> {
                         if (page == 1) {
                             // First page
                             _uiState.postValue(ContentState)
@@ -103,7 +103,7 @@ class HomeViewModel @Inject constructor(
                         }
                     }
 
-                    is DataState.Error -> {
+                    is DataState.Error<List<Photo>> -> {
                         if (page == 1) {
                             _uiState.postValue(ErrorState(dataState.message))
                         } else {
